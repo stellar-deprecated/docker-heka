@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+HEKAD_VNAME=heka-$(echo ${HEKAD_VERSION} | tr . _)-linux-amd64
+
+wget -nv -O hekad.tar.gz https://github.com/mozilla-services/heka/releases/download/v${HEKAD_VERSION}/${HEKAD_VNAME}.tar.gz
+tar -zxf hekad.tar.gz
+rm hekad.tar.gz
+cp -r ${HEKAD_VNAME}/* /usr
+rm -rf ${HEKAD_VNAME}
